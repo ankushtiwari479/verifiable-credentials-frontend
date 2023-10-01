@@ -17,7 +17,7 @@ const StudentHome = () => {
         enrollment._id === enrollmentId ? { ...enrollment, completed: true } : enrollment
       )
     );
-    axios.post(baseURL+'/enrollment/mark-completed',{enrollmentId,courseId}).then(res=>{
+    axios.post(baseURL+'enrollment/mark-completed',{enrollmentId,courseId}).then(res=>{
         console.log('Course completed',res)
         getDetails()
     }).catch(e=>{
@@ -26,7 +26,7 @@ const StudentHome = () => {
   };
 
   const getDetails = () => {
-    axios.get(baseURL+'/student/details').then(res=>{
+    axios.get(baseURL+'student/details').then(res=>{
         console.log("res.data--",res.data)
         setenrollment([res.data.enrollment])
         setDetails(res.data.user)
