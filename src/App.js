@@ -33,6 +33,7 @@ function App() {
 
           {/* Verification Route */}
           <Route path="/verifydoc/:id" element={<VerifyDocument />} />
+          <Route path="/view/:id" element={<VerifyDocument viewOnly />} />
 
           {/* Default Route */}
           {/* <Route path="/" element={<VerifiableCredentialForm />} /> */}

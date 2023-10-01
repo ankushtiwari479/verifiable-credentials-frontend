@@ -26,18 +26,19 @@ const StudentHome = () => {
   };
 
   const getDetails = () => {
+    // console.log("baseURL",baseURL)
     axios.get(baseURL+'student/details').then(res=>{
         console.log("res.data--",res.data)
         setenrollment([res.data.enrollment])
         setDetails(res.data.user)
         setCertficate(res.data.certificate)
     }).catch(e=>{
-        console.error('error fetching course')
+        console.error('error fetching course',e)
     })
   }
 
   const viewCertificate = () => {
-    window.open(window.location.origin+'/verifydoc/'+certficate._id)
+    window.open(window.location.origin+'/view/'+certficate._id)
   }
 
   useEffect(()=>{

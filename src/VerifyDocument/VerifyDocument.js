@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import axios from '../axios'
 import { useParams } from 'react-router-dom';
@@ -6,12 +6,21 @@ import generatePDF from 'react-to-pdf';
 
 
 
-const VerifyDocument = () => {
+const VerifyDocument = ({viewOnly}) => {
   const [adminPassword, setAdminPassword] = useState('');
   const [verified,setVerified] = useState(false)
   const [credential,setCredential] = useState({})
   const { id } = useParams();
   const pdfRef = useRef();
+
+  useEffect(()=>{
+    if(viewOnly)
+    {axios.post('/viewdoc/'+id).then(res=>{
+      setCredential(res?.data);
+    }).catch(e=>{
+      console.log(e)
+    })}
+  },[viewOnly])
   // Set up options for the PDF generation
   const options = {
     orientation: 'portrait', // 'landscape' for landscape mode
@@ -52,7 +61,7 @@ const VerifyDocument = () => {
   };
 
   return (
-      !verified ?
+      (!verified && !viewOnly) ?
        <>
         <Container maxWidth="sm" className={"borderContainer"}>
       <Typography variant="h6" align="center" gutterBottom color={"#434141"}>
