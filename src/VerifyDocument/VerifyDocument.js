@@ -97,6 +97,12 @@ const VerifyDocument = ({viewOnly}) => {
         <Box mt={"2rem"}>
             <Button variant='contained' onClick={handleGeneratePDF}>Print</Button>
         </Box>
+        {verified && <Container ref={pdfRef} maxWidth="sm" sx={{marginTop:"1rem"}} >
+          <Typography variant='body2' sx={{
+            fontSize: "12px",
+            color: "gray",
+          }}>****  This document is verified by TechEdAcademy, ensuring its authenticity and credibility. Inside, you'll find a wealth of knowledge and insights curated by experts in various fields. From cutting-edge technology trends to innovative teaching methodologies, this document serves as a valuable resource for learners and educators alike. ***</Typography>
+          </Container>}
         </>
         ));
 };
