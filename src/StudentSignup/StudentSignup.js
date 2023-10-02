@@ -34,10 +34,12 @@ const StudentSignUp = () => {
 
   return (
     <Container maxWidth="sm" className="borderContainer">
+      <Box component="form">
       <Typography variant="h6" align="center" gutterBottom color="#434141">
         STUDENT SIGN UP
       </Typography>
       <TextField
+        required
         fullWidth
         variant="outlined"
         label="Name"
@@ -46,14 +48,17 @@ const StudentSignUp = () => {
         onChange={(e) => setStudentName(e.target.value)}
       />
       <TextField
+        required
         fullWidth
         variant="outlined"
         label="Email"
+        type='email'
         margin="normal"
         value={studentEmail}
         onChange={(e) => setStudentEmail(e.target.value)}
       />
       <TextField
+        required
         fullWidth
         variant="outlined"
         label="Roll Number"
@@ -78,6 +83,7 @@ const StudentSignUp = () => {
         </Select>
       </FormControl>
       <TextField
+        required
         fullWidth
         variant="outlined"
         label="Password"
@@ -88,6 +94,7 @@ const StudentSignUp = () => {
       />
       <Box mt="2rem">
         <Button
+          type='submit'
           sx={{ padding: '10px' }}
           variant="contained"
           className="globalButton"
@@ -97,6 +104,7 @@ const StudentSignUp = () => {
         >
           Sign Up & Enroll
         </Button>
+      </Box>
       </Box>
     </Container>
   );
