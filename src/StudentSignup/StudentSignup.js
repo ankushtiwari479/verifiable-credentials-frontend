@@ -18,7 +18,8 @@ const StudentSignUp = () => {
         });
   },[])
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
       const response = await axios.post('/student/signup', { name: studentName, email: studentEmail, password: studentPassword, selectedCourse , rollNumber});
       const userData = response.data;
